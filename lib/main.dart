@@ -1,6 +1,7 @@
 import 'package:angry_birds/components/ground.dart';
 import 'package:angry_birds/components/obstacles.dart';
 import 'package:angry_birds/components/player.dart';
+import 'package:angry_birds/components/slingshot.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
@@ -14,7 +15,7 @@ void main() {
 }
 
 class Game extends Forge2DGame with TapCallbacks {
-  Game() : super(gravity: Vector2(0, 20.0));
+  Game() : super(gravity: Vector2(0, 20));
 
   @override
   Future<void> onLoad() async {
@@ -26,7 +27,10 @@ class Game extends Forge2DGame with TapCallbacks {
     add(background);
     Vector2 worldSize = screenToWorld(camera.viewport.virtualSize);
     add(Ground(worldSize));
+    add(Slingshot(worldSize));
+
     add(Player());
+
     add(Obstacles(
       Vector2(300, 50),
       await loadSprite('pig.webp'),
@@ -44,7 +48,7 @@ class Game extends Forge2DGame with TapCallbacks {
       await loadSprite('Barrel.webp'),
     ));
     add(Obstacles(
-      Vector2(300, 250),
+      Vector2(300, 240),
       await loadSprite('Barrel.webp'),
     ));
   }
