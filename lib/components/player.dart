@@ -3,12 +3,15 @@ import 'package:flame/events.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 
 class Player extends BodyComponent with TapCallbacks {
+  final Sprite sprite;
   final double speed = 400;
+
+  Player(this.sprite);
   @override
   Future<void> onLoad() async {
     await super.onLoad();
     renderBody = false;
-    final sprite = await game.loadSprite('Red.webp');
+    //final sprite = await game.loadSprite(sprite);
 
     add(SpriteComponent(
       sprite: sprite,

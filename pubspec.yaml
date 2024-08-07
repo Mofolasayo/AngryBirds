@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   flame: ^1.18.0
   flame_forge2d: ^0.18.1
+  flutter_svg: ^2.0.10+1
   
 
 dev_dependencies:
