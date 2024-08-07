@@ -7,6 +7,7 @@ class GameWonOverlay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Color.fromARGB(132, 20, 20, 20),
       child: Center(
         child: Stack(
           children: [
@@ -88,7 +89,7 @@ class GameWonOverlay extends StatelessWidget {
                                   ),
                                   SizedBox(height: 20),
                                   Text(
-                                    'Current Score',
+                                    'Total Score',
                                     style: TextStyle(
                                       color: Colors.white,
                                       height: 1,
@@ -171,26 +172,6 @@ class GameWonOverlay extends StatelessWidget {
                       ),
                     ),
                   ],
-                ),
-              ),
-            ),
-            Positioned(
-              top: -10,
-              right: -10,
-              child: Container(
-                width: 60,
-                height: 60,
-                decoration: BoxDecoration(
-                  color: Color(0xFF035DA7),
-                  border: Border.all(
-                    color: Colors.white,
-                    width: 5,
-                  ),
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                child: SvgPicture.asset(
-                  color: Color(0xFFFFB159),
-                  'assets/images/close_btn.svg',
                 ),
               ),
             ),

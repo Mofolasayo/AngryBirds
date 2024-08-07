@@ -1,4 +1,7 @@
 import 'package:angry_birds/main.dart';
+import 'package:angry_birds/screens/overlays/game_lost_overlay.dart';
+import 'package:angry_birds/screens/overlays/game_won_overlay.dart';
+import 'package:angry_birds/screens/overlays/pause_overlay_screen.dart';
 import 'package:angry_birds/widgets/highscore.dart';
 import 'package:angry_birds/widgets/music_toggle.dart';
 import 'package:angry_birds/widgets/pause_play.dart';
@@ -18,6 +21,17 @@ class GameScreen extends StatelessWidget {
           GameWidget.controlled(
             gameFactory: () {
               return MyGame();
+            },
+            overlayBuilderMap: {
+              "GameWonOverlay": (BuildContext context, MyGame game) {
+                return GameWonOverlay();
+              },
+              "GameLostOverlay": (BuildContext context, MyGame game) {
+                return GameLostOverlay();
+              },
+              "PauseOverlay": (BuildContext context, MyGame game) {
+                return PauseOverlay();
+              }
             },
           ),
           const Positioned(
