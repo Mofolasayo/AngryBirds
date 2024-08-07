@@ -5,7 +5,7 @@ import 'package:angry_birds/components/slingshot.dart';
 import 'package:angry_birds/main.dart';
 import 'package:flame/components.dart';
 
-class Level3 extends Component with HasGameRef<Game> {
+class Level3 extends Component with HasGameRef<MyGame> {
   @override
   Future<void> onLoad() async {
     await super.onLoad();
