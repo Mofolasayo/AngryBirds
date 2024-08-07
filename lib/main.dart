@@ -1,4 +1,7 @@
+import 'package:angry_birds/levels/level1.dart';
 import 'package:angry_birds/levels/level6.dart';
+import 'package:angry_birds/overlays/welcome_overlay.dart';
+import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
@@ -12,6 +15,11 @@ Future<void> main() async {
   ]);
   runApp(GameWidget(
     game: Game(),
+    overlayBuilderMap: {
+      "WelcomeOverlay": (BuildContext context, Game game) {
+        return WelcomeOverlay(game);
+      }
+    },
   ));
 }
 
@@ -21,10 +29,18 @@ class Game extends Forge2DGame with TapCallbacks {
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    //add(Level1());
-    add(Level6());
+    // Vector2 gameSize = screenToWorld(camera.viewport.virtualSize);
+    add(SpriteComponent()
+      ..sprite = await loadSprite("Site-background-light.webp")
+      ..size = size);
+    overlays.add('WelcomeOverlay');
+    // add(Level1());
+    // add(Level6());
+  }
 
+  void startGame() {
+    overlays.remove('WelcomeOverlay'); // Remove the welcome screen overlay
+    // Add game initialization logic here
+    add(Level1());
   }
 }
-
-
