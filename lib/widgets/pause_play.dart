@@ -14,24 +14,20 @@ class PausePlay extends StatefulWidget {
 }
 
 class _PausePlayState extends State<PausePlay> {
- 
-  void _showPauseOverlay(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return PauseOverlay(game: widget.game);
-      },
-    );
+  void _togglePauseOverlay() {
+    widget.game.togglePause();
+    if (widget.game.isPaused) {
+      widget.game.overlays.add('PauseOverlay');
+    } else {
+      widget.game.overlays.remove('PauseOverlay');
+    }
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () {
-        widget.game.togglePause();
-        setState(() {});
-        _showPauseOverlay(context);
-      },
+      onPressed: _togglePauseOverlay,
       icon: widget.game.isPaused
           ? const Icon(Icons.play_arrow)
           : const Icon(Icons.pause),
