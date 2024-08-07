@@ -10,8 +10,21 @@ import 'package:angry_birds/widgets/score.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 
-class GameScreen extends StatelessWidget {
-  const GameScreen({super.key});
+class GameScreen extends StatefulWidget {
+  const GameScreen({Key? key}) : super(key: key);
+
+  @override
+  _GameScreenState createState() => _GameScreenState();
+}
+
+class _GameScreenState extends State<GameScreen> {
+  late MyGame game;
+
+  @override
+  void initState() {
+    super.initState();
+    game = MyGame();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,20 +32,26 @@ class GameScreen extends StatelessWidget {
       body: Stack(
         children: [
           GameWidget.controlled(
-            gameFactory: () {
-              return MyGame();
-            },
+            gameFactory: () => game,
             overlayBuilderMap: {
+              'pausePlay': (BuildContext context, MyGame game) {
+                return Positioned(
+                  top: 20,
+                  left: 70,
+                  child: PausePlay(game: game),
+                );
+              },
               "GameWonOverlay": (BuildContext context, MyGame game) {
-                return GameWonOverlay();
+                return const GameWonOverlay();
               },
               "GameLostOverlay": (BuildContext context, MyGame game) {
-                return GameLostOverlay();
+                return const GameLostOverlay();
               },
               "PauseOverlay": (BuildContext context, MyGame game) {
-                return PauseOverlay();
+                return PauseOverlay(game: game);
               }
             },
+            initialActiveOverlays: const ['pausePlay'], // Add this line
           ),
           const Positioned(
             top: 20,
@@ -43,11 +62,6 @@ class GameScreen extends StatelessWidget {
             top: 20,
             left: 40,
             child: Restart(),
-          ),
-          const Positioned(
-            top: 20,
-            left: 70,
-            child: PausePlay(),
           ),
           const Positioned(
             top: 20,

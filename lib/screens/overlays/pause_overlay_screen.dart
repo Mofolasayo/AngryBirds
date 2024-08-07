@@ -1,28 +1,34 @@
+import 'package:angry_birds/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class PauseOverlay extends StatelessWidget {
-  const PauseOverlay({super.key});
+  final MyGame game;
+
+  const PauseOverlay({
+    super.key,
+    required this.game,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color.fromARGB(132, 20, 20, 20),
+      color: const Color.fromARGB(132, 20, 20, 20),
       child: Center(
         child: Stack(
           children: [
             Container(
               width: MediaQuery.sizeOf(context).width / 2,
               height: MediaQuery.sizeOf(context).height / 1.6,
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(
-                color: Color(0xFF035DA7),
+                color: const Color(0xFF035DA7),
                 border: Border.all(
                   color: Colors.white,
                   width: 5,
                 ),
-                borderRadius: BorderRadius.all(Radius.circular(30)),
+                borderRadius: const BorderRadius.all(Radius.circular(30)),
               ),
               child: Container(
                 width: double.infinity,
@@ -40,17 +46,17 @@ class PauseOverlay extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Expanded(
                       child: Container(
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
-                          color: Color(0xFF047EE2),
+                          color: const Color(0xFF047EE2),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Column(
                           children: [
-                            Center(
+                            const Center(
                               child: Column(
                                 children: [
                                   Text(
@@ -75,55 +81,56 @@ class PauseOverlay extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
-                                  padding: EdgeInsets.all(15),
+                                  padding: const EdgeInsets.all(15),
                                   width: 80,
                                   height: 80,
                                   decoration: BoxDecoration(
-                                      color: Color(0xFF035DA7),
+                                      color: const Color(0xFF035DA7),
                                       border: Border.all(
                                         color: Colors.white,
                                         width: 3,
                                       ),
                                       borderRadius: BorderRadius.circular(100)),
                                   child: SvgPicture.asset(
-                                    color: Color(0xFFFFB159),
+                                    color: const Color(0xFFFFB159),
                                     'assets/images/menu_btn.svg',
                                   ),
                                 ),
-                                SizedBox(width: 30),
+                                const SizedBox(width: 30),
                                 Container(
-                                  padding: EdgeInsets.all(15),
+                                  padding: const EdgeInsets.all(15),
                                   width: 80,
                                   height: 80,
                                   decoration: BoxDecoration(
-                                      color: Color(0xFF035DA7),
+                                      color: const Color(0xFF035DA7),
                                       border: Border.all(
                                         color: Colors.white,
                                         width: 3,
                                       ),
                                       borderRadius: BorderRadius.circular(100)),
                                   child: SvgPicture.asset(
-                                    color: Color(0xFFFFB159),
+                                    color: const Color(0xFFFFB159),
                                     'assets/images/restart_btn.svg',
                                   ),
                                 ),
-                                SizedBox(width: 30),
+                                const SizedBox(width: 30),
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.pop(context);
+                                    game.togglePause();
+                                    game.overlays.remove('PauseOverlay');
                                   },
                                   child: Container(
-                                    padding: EdgeInsets.all(15),
+                                    padding: const EdgeInsets.all(15),
                                     width: 80,
                                     height: 80,
                                     decoration: BoxDecoration(
-                                        color: Color(0xFF035DA7),
+                                        color: const Color(0xFF035DA7),
                                         border: Border.all(
                                           color: Colors.white,
                                           width: 3,
@@ -131,7 +138,7 @@ class PauseOverlay extends StatelessWidget {
                                         borderRadius:
                                             BorderRadius.circular(100)),
                                     child: SvgPicture.asset(
-                                      color: Color(0xFFFFB159),
+                                      color: const Color(0xFFFFB159),
                                       'assets/images/play_btn.svg',
                                     ),
                                   ),
@@ -151,13 +158,14 @@ class PauseOverlay extends StatelessWidget {
               right: -10,
               child: GestureDetector(
                 onTap: () {
-                  Navigator.pop(context);
+                  game.togglePause();
+                  game.overlays.remove('PauseOverlay');
                 },
                 child: Container(
                   width: 60,
                   height: 60,
                   decoration: BoxDecoration(
-                    color: Color(0xFF035DA7),
+                    color: const Color(0xFF035DA7),
                     border: Border.all(
                       color: Colors.white,
                       width: 5,
@@ -165,7 +173,7 @@ class PauseOverlay extends StatelessWidget {
                     borderRadius: BorderRadius.circular(50),
                   ),
                   child: SvgPicture.asset(
-                    color: Color(0xFFFFB159),
+                    color: const Color(0xFFFFB159),
                     'assets/images/close_btn.svg',
                   ),
                 ),

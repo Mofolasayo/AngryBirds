@@ -1,34 +1,43 @@
+import 'package:angry_birds/main.dart';
 import 'package:angry_birds/screens/overlays/pause_overlay_screen.dart';
 import 'package:flutter/material.dart';
 
+
+
 class PausePlay extends StatefulWidget {
-  const PausePlay({super.key});
+  final MyGame game;
+
+  const PausePlay({super.key, required this.game});
 
   @override
   State<PausePlay> createState() => _PausePlayState();
 }
 
 class _PausePlayState extends State<PausePlay> {
-  _showPauseOverlay(context) {
+ 
+  void _showPauseOverlay(BuildContext context) {
     showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return PauseOverlay();
-        });
+      context: context,
+      builder: (BuildContext context) {
+        return PauseOverlay(game: widget.game);
+      },
+    );
   }
 
-  bool isPaused = false;
   @override
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () {
-        
-        setState(() {
-          // isPaused = !isPaused;
-        });
+        widget.game.togglePause();
+        setState(() {});
         _showPauseOverlay(context);
       },
-      icon: isPaused ? const Icon(Icons.play_arrow) : const Icon(Icons.pause),
+      icon: widget.game.isPaused
+          ? const Icon(Icons.play_arrow)
+          : const Icon(Icons.pause),
     );
   }
 }
+
+
+
