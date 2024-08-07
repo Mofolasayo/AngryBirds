@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'main.dart';
-import 'package:flame/game.dart';
 
 class SplashScreen extends StatefulWidget {
   @override

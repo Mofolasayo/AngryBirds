@@ -21,9 +21,11 @@ Future<void> main() async {
 
 class MyGame extends Forge2DGame with TapCallbacks {
   bool isPaused = false;
+  
   MyGame() : super(gravity: Vector2(0, 20));
+
   void togglePause() {
-    isPaused = !isPaused;
+    isPaused = !isPaused; 
     if (isPaused) {
       pauseEngine();
     } else {
