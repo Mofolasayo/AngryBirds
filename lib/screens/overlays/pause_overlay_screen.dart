@@ -114,20 +114,26 @@ class PauseOverlay extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(width: 30),
-                                Container(
-                                  padding: EdgeInsets.all(15),
-                                  width: 80,
-                                  height: 80,
-                                  decoration: BoxDecoration(
-                                      color: Color(0xFF035DA7),
-                                      border: Border.all(
-                                        color: Colors.white,
-                                        width: 3,
-                                      ),
-                                      borderRadius: BorderRadius.circular(100)),
-                                  child: SvgPicture.asset(
-                                    color: Color(0xFFFFB159),
-                                    'assets/images/next_btn.svg',
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.all(15),
+                                    width: 80,
+                                    height: 80,
+                                    decoration: BoxDecoration(
+                                        color: Color(0xFF035DA7),
+                                        border: Border.all(
+                                          color: Colors.white,
+                                          width: 3,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(100)),
+                                    child: SvgPicture.asset(
+                                      color: Color(0xFFFFB159),
+                                      'assets/images/play_btn.svg',
+                                    ),
                                   ),
                                 ),
                               ],
@@ -143,20 +149,25 @@ class PauseOverlay extends StatelessWidget {
             Positioned(
               top: -10,
               right: -10,
-              child: Container(
-                width: 60,
-                height: 60,
-                decoration: BoxDecoration(
-                  color: Color(0xFF035DA7),
-                  border: Border.all(
-                    color: Colors.white,
-                    width: 5,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: Color(0xFF035DA7),
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 5,
+                    ),
+                    borderRadius: BorderRadius.circular(50),
                   ),
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                child: SvgPicture.asset(
-                  color: Color(0xFFFFB159),
-                  'assets/images/close_btn.svg',
+                  child: SvgPicture.asset(
+                    color: Color(0xFFFFB159),
+                    'assets/images/close_btn.svg',
+                  ),
                 ),
               ),
             ),
