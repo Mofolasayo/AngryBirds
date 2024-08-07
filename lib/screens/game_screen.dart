@@ -9,6 +9,7 @@ import 'package:angry_birds/widgets/restart.dart';
 import 'package:angry_birds/widgets/score.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:angry_birds/overlays/welcome_overlay.dart';
 
 class GameScreen extends StatefulWidget {
   const GameScreen({Key? key}) : super(key: key);
@@ -34,6 +35,11 @@ class _GameScreenState extends State<GameScreen> {
           GameWidget.controlled(
             gameFactory: () => game,
             overlayBuilderMap: {
+              'welcomeScreenOverlay': (BuildContext context, MyGame game) {
+                return Center(
+                  child: WelcomeOverlay(game),
+                );
+              },
               'pausePlay': (BuildContext context, MyGame game) {
                 return Positioned(
                   top: 20,

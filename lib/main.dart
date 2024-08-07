@@ -37,27 +37,17 @@ class MyGame extends Forge2DGame with TapCallbacks {
       super.update(dt);
     }
   }
+
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-<<<<<<< HEAD
-    // Vector2 gameSize = screenToWorld(camera.viewport.virtualSize);
-    add(SpriteComponent()
-      ..sprite = await loadSprite("Site-background-light.webp")
-      ..size = size);
-    overlays.add('WelcomeOverlay');
-    // add(Level1());
-    // add(Level6());
+    overlays.add("welcomeScreenOverlay");
+    add(Level1());
+
+    //overlays.add('PauseOverlay');
   }
 
   void startGame() {
-    overlays.remove('WelcomeOverlay'); // Remove the welcome screen overlay
-    // Add game initialization logic here
-    add(Level1());
-=======
-    add(Level6());
-    
-    //overlays.add('PauseOverlay');
->>>>>>> 024bff29e628718f1c1a2d0e04fd5319ebca1ecf
+    overlays.remove("welcomeScreenOverlay");
   }
 }

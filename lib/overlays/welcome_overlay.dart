@@ -2,7 +2,7 @@ import 'package:angry_birds/main.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeOverlay extends StatelessWidget {
-  final Game game;
+  final MyGame game;
 
   const WelcomeOverlay(this.game, {super.key});
 
