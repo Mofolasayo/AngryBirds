@@ -41,6 +41,7 @@ class Player extends BodyComponent with TapCallbacks {
  
   @override
   bool onTapDown(TapDownEvent event) {
+    
     Vector2 impulse = Vector2(60, -30) * 100 * speed;
     body.applyLinearImpulse(impulse);
     return false;

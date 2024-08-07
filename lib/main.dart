@@ -24,6 +24,7 @@ class MyGame extends Forge2DGame with TapCallbacks {
   Future<void> onLoad() async {
     await super.onLoad();
     add(Level6());
+    
     //overlays.add('PauseOverlay');
   }
 }

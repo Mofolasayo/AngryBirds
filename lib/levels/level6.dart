@@ -19,9 +19,7 @@ class Level6 extends Component with HasGameRef<MyGame> {
     add(Ground(worldSize));
     add(Slingshot(worldSize));
 
-    add(Player(
-      await gameRef.loadSprite('Chuck_Classic_Old.webp'),
-    ));
+    
     add(Player(
       await gameRef.loadSprite('Red.webp'),
     ));
