@@ -1,4 +1,9 @@
+import 'package:angry_birds/components/player.dart';
+import 'package:angry_birds/components/slingshot.dart';
+import 'package:angry_birds/levels/level1.dart';
 import 'package:angry_birds/levels/level6.dart';
+import 'package:angry_birds/screens/game_screen.dart';
+import 'package:angry_birds/widgets/highscore.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
@@ -10,18 +15,20 @@ Future<void> main() async {
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeRight,
   ]);
-  runApp(GameWidget(
-    game: Game(),
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: GameScreen(),
   ));
 }
 
-class Game extends Forge2DGame with TapCallbacks {
-  Game() : super(gravity: Vector2(0, 20));
+class MyGame extends Forge2DGame with TapCallbacks {
+  MyGame() : super(gravity: Vector2(0, 20));
 
   @override
   Future<void> onLoad() async {
     await super.onLoad();
     //add(Level1());
+    const Highscore();
     add(Level6());
 
   }
