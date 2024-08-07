@@ -1,11 +1,6 @@
-import 'package:angry_birds/components/player.dart';
-import 'package:angry_birds/components/slingshot.dart';
-import 'package:angry_birds/levels/level1.dart';
 import 'package:angry_birds/levels/level6.dart';
 import 'package:angry_birds/screens/game_screen.dart';
-import 'package:angry_birds/widgets/highscore.dart';
 import 'package:flame/events.dart';
-import 'package:flame/game.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -27,8 +22,6 @@ class MyGame extends Forge2DGame with TapCallbacks {
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    //add(Level1());
-    const Highscore();
     add(Level6());
 
   }
