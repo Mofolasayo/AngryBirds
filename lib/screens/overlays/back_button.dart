@@ -17,6 +17,6 @@ class BackButtonOverlay extends StatelessWidget {
         onTap: () {
           game.backAction(overlayname);
         },
-        child: Icon(Icons.arrow_back));
+        child: Icon(Icons.arrow_back_ios_new_sharp));
   }
 }

@@ -54,7 +54,7 @@ class _GameScreenState extends State<GameScreen> {
               },
               "backButtonOverlay": (BuildContext context, MyGame game) {
                 return Positioned(
-                  top: 20,
+                  top: 50,
                   left: 70,
                   child: BackButtonOverlay(
                     game: game,
@@ -92,7 +92,6 @@ class _GameScreenState extends State<GameScreen> {
                   child: Highscore(),
                 );
               },
-            
             },
             initialActiveOverlays: const [
               // 'pausePlay',
