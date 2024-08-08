@@ -26,6 +26,6 @@ Install dependencies:
 Run the app:
 ```flutter run```
 
-Appetizo: 
+Appetizo: https://appetize.io/app/b_s4wgn7gorbedhpva5lrheu5clu
 
 Apk: https://drive.google.com/drive/folders/1OPLp3vG-4daaZUZ6sgdM_JORHuIs-ON-?usp=drive_link
