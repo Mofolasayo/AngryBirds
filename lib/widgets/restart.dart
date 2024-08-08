@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Restart extends StatefulWidget {
+  // final MyGame game;
   const Restart({super.key});
 
   @override

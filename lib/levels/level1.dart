@@ -1,11 +1,13 @@
 import 'package:angry_birds/components/ground.dart';
 import 'package:angry_birds/components/obstacles.dart';
+import 'package:angry_birds/components/pig.dart';
 import 'package:angry_birds/components/player.dart';
 import 'package:angry_birds/components/slingshot.dart';
 import 'package:angry_birds/main.dart';
 import 'package:flame/components.dart';
 
 class Level1 extends Component with HasGameRef<MyGame> {
+  List<Pig> pigs = [];
   @override
   Future<void> onLoad() async {
     await super.onLoad();
@@ -22,11 +24,11 @@ class Level1 extends Component with HasGameRef<MyGame> {
     add(Player(
       await gameRef.loadSprite('Red.webp'),
     ));
-
-    add(Obstacles(
-      Vector2(300, 50),
-      await gameRef.loadSprite('pig.webp'),
-    ));
+var pig1 =
+        Pig(Vector2(300, 50), await gameRef.loadSprite('pig.webp'), gameRef);
+    pigs.add(pig1);
+    add(pig1);
+    
     add(Obstacles(
       Vector2(300, 100),
       await gameRef.loadSprite('Barrel.webp'),
@@ -43,5 +45,17 @@ class Level1 extends Component with HasGameRef<MyGame> {
       Vector2(300, 240),
       await gameRef.loadSprite('Barrel.webp'),
     ));
+    
+  
+  }
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+    bool allPigsTouchedGround = pigs.every((pig) => pig.isTouchingGround);
+    if (allPigsTouchedGround) {
+      gameRef.overlays.add('GameWonOverlay');
+      gameRef.pauseEngine();
+    }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:angry_birds/components/ground.dart';
 import 'package:angry_birds/components/obstacles.dart';
+import 'package:angry_birds/components/pig.dart';
 import 'package:angry_birds/components/player.dart';
 import 'package:angry_birds/components/slingshot.dart';
 import 'package:angry_birds/main.dart';
@@ -23,9 +24,10 @@ class Level2 extends Component with HasGameRef<MyGame> {
       await gameRef.loadSprite('Chuck_Classic_Old.webp'),
     ));
 
-    add(Obstacles(
+    add(Pig(
       Vector2(300, 50),
       await gameRef.loadSprite('pig.webp'),
+      gameRef
     ));
     add(Obstacles(
       Vector2(300, 100),
@@ -44,9 +46,10 @@ class Level2 extends Component with HasGameRef<MyGame> {
       await gameRef.loadSprite('Wooden_Crate.webp'),
     ));
 
-    add(Obstacles(
+    add(Pig(
       Vector2(350, 50),
       await gameRef.loadSprite('pig.webp'),
+      gameRef
     ));
     add(Obstacles(
       Vector2(350, 100),

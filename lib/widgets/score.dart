@@ -1,29 +1,38 @@
+import 'package:angry_birds/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class Score extends StatelessWidget {
-  const Score({super.key});
+  final MyGame game;
+
+  const Score({super.key, required this.game});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: Color.fromRGBO(121, 85, 72, 0.637),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: const Row(
-        children: [
-          Text(
-            'Score: ',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+    return ValueListenableBuilder<int>(
+      valueListenable: game.scoreNotifier,
+      builder: (context, value, child) {
+        return Container(
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(121, 85, 72, 0.637),
+            borderRadius: BorderRadius.circular(8),
           ),
-          Text(
-            '1000',
-            style: TextStyle(color: Colors.white),
+          child: Row(
+            children: [
+              const Text(
+                'Score: ',
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                '$value',
+                style: const TextStyle(color: Colors.white),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
