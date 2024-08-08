@@ -78,62 +78,62 @@ class Player extends BodyComponent with DragCallbacks, TapCallbacks {
     return world.createBody(bodyDef)..createFixture(fixtureDef);
   }
 
-  // @override
-  // bool onTapDown(TapDownEvent event) {
-  //   Vector2 impulse = Vector2(60, -30) * 100 * speed;
-  //   body.applyLinearImpulse(impulse);
-  //   return false;
-  // }
-
   @override
-  void onDragStart(DragStartEvent event) {
-    super.onDragStart(event);
-    isDragging = true;
-    initialPosition = body.position
-        .clone(); // Update the initial position to the current position
-
-    // body.linearVelocity(Vector2.zero());
-    trajectoryLine = TrajectoryLine(
-      startPoint: body.position.clone(),
-      direction: initialPosition - body.position,
-    );
-    game.add(trajectoryLine!);
-  }
-
-  @override
-  void onDragUpdate(DragUpdateEvent event) {
-    super.onDragUpdate(event);
-    if (isDragging) {
-      final dragPosition = event.localStartPosition;
-      if (dragPosition.x < initialPosition.x) {
-        final worldPosition = Vector2(
-            dragPosition.x, dragPosition.y); // Adjusting for camera zoom
-        body.setTransform(worldPosition, body.angle);
-        // body.setTransform(dragPosition, body.angle);
-        sprite.srcPosition = dragPosition;
-
-        trajectoryLine?.startPoint = body.position;
-        trajectoryLine?.direction = initialPosition - body.position;
-      }
-    }
-  }
-
-  @override
-  void onDragEnd(DragEndEvent event) {
-    super.onDragEnd(event);
-    isDragging = false;
-    // trajectoryLine?.remove(Tra);
-    trajectoryLine = null;
-
-    // Enable gravity when drag ends
-    // body.setGravityScale(Vector2(0, 1));
-
-    // Calculate force based on drag distance
-    // final force = initialPosition - body.position;
+  bool onTapDown(TapDownEvent event) {
     Vector2 impulse = Vector2(60, -30) * 100 * speed;
     body.applyLinearImpulse(impulse);
-    // Propel the player forward based on the drag distance
-    // body.applyLinearImpulse();
-    sprite.srcPosition = body.position;
+    return false;
   }
+
+  // @override
+  // void onDragStart(DragStartEvent event) {
+  //   super.onDragStart(event);
+  //   isDragging = true;
+  //   initialPosition = body.position
+  //       .clone(); // Update the initial position to the current position
+
+  //   // body.linearVelocity(Vector2.zero());
+  //   trajectoryLine = TrajectoryLine(
+  //     startPoint: body.position.clone(),
+  //     direction: initialPosition - body.position,
+  //   );
+  //   game.add(trajectoryLine!);
+  // }
+
+  // @override
+  // void onDragUpdate(DragUpdateEvent event) {
+  //   super.onDragUpdate(event);
+  //   if (isDragging) {
+  //     final dragPosition = event.localStartPosition;
+  //     if (dragPosition.x < initialPosition.x) {
+  //       final worldPosition = Vector2(
+  //           dragPosition.x, dragPosition.y); // Adjusting for camera zoom
+  //       body.setTransform(worldPosition, body.angle);
+  //       // body.setTransform(dragPosition, body.angle);
+  //       sprite.srcPosition = dragPosition;
+
+  //       trajectoryLine?.startPoint = body.position;
+  //       trajectoryLine?.direction = initialPosition - body.position;
+  //     }
+  //   }
+  // }
+
+  // @override
+  // void onDragEnd(DragEndEvent event) {
+  //   super.onDragEnd(event);
+  //   isDragging = false;
+  //   // trajectoryLine?.remove(Tra);
+  //   trajectoryLine = null;
+
+  //   // Enable gravity when drag ends
+  //   // body.setGravityScale(Vector2(0, 1));
+
+  //   // Calculate force based on drag distance
+  //   // final force = initialPosition - body.position;
+  //   Vector2 impulse = Vector2(60, -30) * 100 * speed;
+  //   body.applyLinearImpulse(impulse);
+  //   // Propel the player forward based on the drag distance
+  //   // body.applyLinearImpulse();
+  //   sprite.srcPosition = body.position;
+  // }
 }
