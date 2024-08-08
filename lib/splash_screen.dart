@@ -1,3 +1,4 @@
+import 'package:angry_birds/screens/game_screen.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -9,6 +10,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
+  double _loadingProgress = 0.0;
 
   @override
   void initState() {
@@ -17,6 +19,11 @@ class _SplashScreenState extends State<SplashScreen>
       duration: const Duration(seconds: 3),
       vsync: this,
     )..forward();
+    _controller.addListener(() {
+      setState(() {
+        _loadingProgress = _controller.value;
+      });
+    });
     _startSplashScreenTimer();
   }
 
@@ -32,9 +39,9 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   _navigateToGame() {
-    //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-    // return GameScreen(); // Transition to the game screen
-    // }));
+    /*  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
+      return GameScreen();
+    })); */
   }
 
   @override
@@ -45,23 +52,24 @@ class _SplashScreenState extends State<SplashScreen>
         children: [
           // Decorative background
           Image.asset(
-            'assets/images/background.jpg',
+            'assets/images/bg2.jpg',
             fit: BoxFit.cover,
           ),
           Column(
+            mainAxisAlignment:
+                MainAxisAlignment.center, // Center the progress bar
             children: [
               // Title at the top
               Padding(
-                padding: const EdgeInsets.only(top: 50.0),
+                padding: const EdgeInsets.only(bottom: 190.0),
                 child: Text(
                   'Angry Birds',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontFamily: 'AngryBirds',
-                    fontSize: MediaQuery.of(context).size.width *
-                        0.1, // Responsive font size
+                    fontSize: MediaQuery.of(context).size.width * 0.1,
                     fontWeight: FontWeight.bold,
-                    color: Colors.redAccent,
+                    color: const Color.fromARGB(255, 247, 245, 245),
                     shadows: [
                       Shadow(
                         blurRadius: 10.0,
@@ -72,40 +80,32 @@ class _SplashScreenState extends State<SplashScreen>
                   ),
                 ),
               ),
-              Spacer(),
               // Loading bar
+              Center(
+                child: SizedBox(
+                  width: 150,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: LinearProgressIndicator(
+                      value: _loadingProgress,
+                      backgroundColor: Color.fromARGB(255, 255, 242, 58),
+                      valueColor:
+                          AlwaysStoppedAnimation<Color>(Colors.greenAccent),
+                      minHeight: 20,
+                    ),
+                  ),
+                ),
+              ),
+              // Loading text
               Padding(
-                padding: const EdgeInsets.only(bottom: 50.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width *
-                          0.7, // 70% of screen width
-                      child: LinearProgressIndicator(
-                        value: _controller.value,
-                        backgroundColor: Color.fromARGB(255, 255, 242, 58),
-                        valueColor:
-                            AlwaysStoppedAnimation<Color>(Colors.greenAccent),
-                        minHeight: 10,
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      'Loading...',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        shadows: [
-                          Shadow(
-                            blurRadius: 5.0,
-                            color: Colors.black,
-                            offset: Offset(2.0, 2.0),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                padding: const EdgeInsets.only(top: 10.0),
+                child: Text(
+                  'Loading...',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ],

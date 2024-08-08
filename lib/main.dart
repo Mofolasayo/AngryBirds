@@ -7,16 +7,26 @@ import 'package:angry_birds/screens/game_screen.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:angry_birds/splash_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeRight,
   ]);
-  runApp(const MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: GameScreen(),
-  ));
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SplashScreen(), // Start with the SplashScreen
+    );
+  }
 }
 
 class MyGame extends Forge2DGame with TapCallbacks {
