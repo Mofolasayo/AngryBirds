@@ -57,8 +57,8 @@ class _GameScreenState extends State<GameScreen> {
                 return PauseOverlay(game: game);
               },
               "MusicOverlay": (BuildContext context, MyGame game) {
-                return const Positioned(
-                    top: 20, left: 10, child: MusicToggle());
+                return Positioned(
+                    top: 20, left: 10, child: MusicToggle(game: game));
               },
               "RestartOverlay": (BuildContext context, MyGame game) {
                 return const Positioned(top: 20, left: 40, child: Restart());

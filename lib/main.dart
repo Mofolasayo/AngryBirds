@@ -7,9 +7,11 @@ import 'package:angry_birds/screens/game_screen.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flame_audio/flame_audio.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+   
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeRight,
   ]);
@@ -21,8 +23,18 @@ Future<void> main() async {
 
 class MyGame extends Forge2DGame with TapCallbacks {
   bool isPaused = false;
+   bool isMusicPlaying = true;
 
   MyGame() : super(gravity: Vector2(0, 20));
+
+  void toggleMusic() {
+    if (isMusicPlaying) {
+      FlameAudio.bgm.pause();  
+    } else {
+      FlameAudio.bgm.resume();
+    }
+    isMusicPlaying = !isMusicPlaying;
+  }
 
   void togglePause() {
     isPaused = !isPaused;
@@ -43,6 +55,8 @@ class MyGame extends Forge2DGame with TapCallbacks {
   @override
   Future<void> onLoad() async {
     await super.onLoad();
+    FlameAudio.bgm.initialize();
+    FlameAudio.bgm.play('bg_music.mp3', volume: 0.5); 
     overlays.add("welcomeScreenOverlay");
     add(SpriteComponent()
       ..sprite = await loadSprite("Site-background-light.webp")
@@ -50,6 +64,8 @@ class MyGame extends Forge2DGame with TapCallbacks {
   }
 
   void startGame() {
+    FlameAudio.bgm.stop();
+    FlameAudio.bgm.play('in_game.mp3', volume: 0.5); 
     overlays.remove("welcomeScreenOverlay");
     overlays.add('pausePlay');
     overlays.add('MusicOverlay');
