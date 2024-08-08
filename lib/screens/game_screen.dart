@@ -1,6 +1,7 @@
 import 'package:angry_birds/main.dart';
 import 'package:angry_birds/screens/overlays/game_lost_overlay.dart';
 import 'package:angry_birds/screens/overlays/game_won_overlay.dart';
+import 'package:angry_birds/screens/overlays/levels_screen_overlay.dart';
 import 'package:angry_birds/screens/overlays/pause_overlay_screen.dart';
 import 'package:angry_birds/widgets/highscore.dart';
 import 'package:angry_birds/widgets/music_toggle.dart';
@@ -39,6 +40,9 @@ class _GameScreenState extends State<GameScreen> {
                 return Center(
                   child: WelcomeOverlay(game),
                 );
+              },
+              'levelsOverlay': (BuildContext context, MyGame game) {
+                return Center(child: Levels());
               },
               'pausePlay': (BuildContext context, MyGame game) {
                 return Positioned(

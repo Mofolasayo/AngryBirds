@@ -57,4 +57,9 @@ class MyGame extends Forge2DGame with TapCallbacks {
     overlays.add('pausePlay');
     add(Level1());
   }
+
+  void viewLevels() {
+    overlays.remove("welcomeScreenOverlay");
+    overlays.add("levelsOverlay");
+  }
 }
