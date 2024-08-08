@@ -69,7 +69,6 @@ void updateScore(int newScore) {
       ..size = size);
     add(Ground(size));
 
-    add(Level1());
   }
 
   void startGame() {
