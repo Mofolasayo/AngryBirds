@@ -1,4 +1,7 @@
+import 'package:angry_birds/levels/level1.dart';
 import 'package:angry_birds/levels/level6.dart';
+import 'package:angry_birds/overlays/welcome_overlay.dart';
+import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:angry_birds/screens/game_screen.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
@@ -16,14 +19,13 @@ Future<void> main() async {
   ));
 }
 
-
 class MyGame extends Forge2DGame with TapCallbacks {
   bool isPaused = false;
-  
+
   MyGame() : super(gravity: Vector2(0, 20));
 
   void togglePause() {
-    isPaused = !isPaused; 
+    isPaused = !isPaused;
     if (isPaused) {
       pauseEngine();
     } else {
@@ -41,8 +43,18 @@ class MyGame extends Forge2DGame with TapCallbacks {
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    add(Level6());
-    
+    overlays.add("welcomeScreenOverlay");
+    add(SpriteComponent()
+      ..sprite = await loadSprite("Site-background-light.webp")
+      ..size = size);
+
     //overlays.add('PauseOverlay');
+    overlays.remove('pausePlay');
+  }
+
+  void startGame() {
+    overlays.remove("welcomeScreenOverlay");
+    overlays.add('pausePlay');
+    add(Level1());
   }
 }

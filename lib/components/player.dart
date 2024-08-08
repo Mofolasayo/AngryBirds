@@ -22,13 +22,11 @@ class Player extends BodyComponent with TapCallbacks {
 
   @override
   Body createBody() {
-
     final shape = CircleShape()..radius = 10;
     final bodyDef = BodyDef(
       position: Vector2(70, 20),
       type: BodyType.dynamic,
-      bullet: true, 
-      
+      bullet: true,
     );
     final fixtureDef = FixtureDef(
       shape,
@@ -38,13 +36,10 @@ class Player extends BodyComponent with TapCallbacks {
     return world.createBody(bodyDef)..createFixture(fixtureDef);
   }
 
- 
   @override
   bool onTapDown(TapDownEvent event) {
-    
     Vector2 impulse = Vector2(60, -30) * 100 * speed;
     body.applyLinearImpulse(impulse);
     return false;
   }
-  
 }
