@@ -59,30 +59,30 @@ class _GameScreenState extends State<GameScreen> {
               },
               "PauseOverlay": (BuildContext context, MyGame game) {
                 return PauseOverlay(game: game);
-              }
+              },
+              "MusicOverlay": (BuildContext context, MyGame game) {
+                return const Positioned(
+                    top: 20, left: 10, child: MusicToggle());
+              },
+              "RestartOverlay": (BuildContext context, MyGame game) {
+                return const Positioned(top: 20, left: 40, child: Restart());
+              },
+              "ScoreOverlay": (BuildContext context, MyGame game) {
+                return const Positioned(top: 20, right: 20, child: Score());
+              },
+              "HighScoreOverlay": (BuildContext context, MyGame game) {
+                return const Positioned(top: 60, right: 20, child: Highscore());
+              },
             },
-            initialActiveOverlays: const ['pausePlay'], // Add this line
+            initialActiveOverlays: const [
+              // 'pausePlay',
+              // 'MusicOverlay',
+              // 'RestartOverlay',
+              // 'ScoreOverlay',
+              // 'HighScoreOverlay',
+            ], // Add this line
           ),
-          const Positioned(
-            top: 20,
-            left: 10,
-            child: MusicToggle(),
-          ),
-          const Positioned(
-            top: 20,
-            left: 40,
-            child: Restart(),
-          ),
-          const Positioned(
-            top: 20,
-            right: 20,
-            child: Score(),
-          ),
-          const Positioned(
-            top: 60,
-            right: 20,
-            child: Highscore(),
-          ),
+          
         ],
       ),
     );

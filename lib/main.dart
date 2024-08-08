@@ -47,14 +47,15 @@ class MyGame extends Forge2DGame with TapCallbacks {
     add(SpriteComponent()
       ..sprite = await loadSprite("Site-background-light.webp")
       ..size = size);
-
-    //overlays.add('PauseOverlay');
-    overlays.remove('pausePlay');
   }
 
   void startGame() {
     overlays.remove("welcomeScreenOverlay");
     overlays.add('pausePlay');
+    overlays.add('MusicOverlay');
+    overlays.add('RestartOverlay');
+    overlays.add('ScoreOverlay');
+    overlays.add('HighScoreOverlay');
     add(Level1());
   }
 
