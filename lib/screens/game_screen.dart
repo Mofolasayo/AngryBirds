@@ -78,12 +78,21 @@ class _GameScreenState extends State<GameScreen> {
               "RestartOverlay": (BuildContext context, MyGame game) {
                 return const Positioned(top: 20, left: 40, child: Restart());
               },
-              "ScoreOverlay": (BuildContext context, MyGame game) {
-                return const Positioned(top: 20, right: 20, child: Score());
+              "scoreOverlay": (BuildContext context, MyGame game) {
+                return Positioned(
+                  top: 20,
+                  right: 20,
+                  child: Score(game: game),
+                );
               },
-              "HighScoreOverlay": (BuildContext context, MyGame game) {
-                return const Positioned(top: 60, right: 20, child: Highscore());
+              "highScoreOverlay": (BuildContext context, MyGame game) {
+                return const Positioned(
+                  top: 60,
+                  right: 20,
+                  child: Highscore(),
+                );
               },
+            
             },
             initialActiveOverlays: const [
               // 'pausePlay',
