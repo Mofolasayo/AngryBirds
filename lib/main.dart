@@ -79,8 +79,8 @@ void updateScore(int newScore) {
     overlays.add('pausePlay');
     overlays.add('MusicOverlay');
     overlays.add('RestartOverlay');
-    overlays.add('ScoreOverlay');
-    overlays.add('HighScoreOverlay');
+    overlays.add('scoreOverlay');
+    overlays.add('highScoreOverlay');
     add(Level1());
   }
 }
