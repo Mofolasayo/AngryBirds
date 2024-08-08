@@ -7,24 +7,24 @@ class GameLostOverlay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color.fromARGB(132, 20, 20, 20),
+      color: const Color.fromARGB(132, 20, 20, 20),
       child: Center(
         child: Stack(
           children: [
             Container(
               width: MediaQuery.sizeOf(context).width / 2,
               height: MediaQuery.sizeOf(context).height / 1.3,
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(
-                color: Color(0xFF035DA7),
+                color: const Color(0xFF035DA7),
                 border: Border.all(
                   color: Colors.white,
                   width: 5,
                 ),
-                borderRadius: BorderRadius.all(Radius.circular(30)),
+                borderRadius: const BorderRadius.all(Radius.circular(30)),
               ),
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 height: double.infinity,
                 child: Column(
@@ -33,16 +33,16 @@ class GameLostOverlay extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
+                        SizedBox(
                           width: 80,
                           height: 80,
                           child: SvgPicture.asset(
-                            color: Color(0xFFFFB159),
+                            color: const Color(0xFFFFB159),
                             'assets/images/open_star.svg',
                           ),
                         ),
-                        SizedBox(width: 30),
-                        Container(
+                        const SizedBox(width: 30),
+                        SizedBox(
                           width: 80,
                           height: 80,
                           child: SvgPicture.asset(
@@ -52,8 +52,8 @@ class GameLostOverlay extends StatelessWidget {
                             'assets/images/open_star.svg',
                           ),
                         ),
-                        SizedBox(width: 30),
-                        Container(
+                        const SizedBox(width: 30),
+                        SizedBox(
                           width: 80,
                           height: 80,
                           child: SvgPicture.asset(
