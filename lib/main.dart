@@ -21,11 +21,11 @@ Future<void> main() async {
 
 class MyGame extends Forge2DGame with TapCallbacks {
   bool isPaused = false;
-  
+
   MyGame() : super(gravity: Vector2(0, 20));
 
   void togglePause() {
-    isPaused = !isPaused; 
+    isPaused = !isPaused;
     if (isPaused) {
       pauseEngine();
     } else {
@@ -44,12 +44,17 @@ class MyGame extends Forge2DGame with TapCallbacks {
   Future<void> onLoad() async {
     await super.onLoad();
     overlays.add("welcomeScreenOverlay");
-    add(Level1());
+    add(SpriteComponent()
+      ..sprite = await loadSprite("Site-background-light.webp")
+      ..size = size);
 
     //overlays.add('PauseOverlay');
+    overlays.remove('pausePlay');
   }
 
   void startGame() {
     overlays.remove("welcomeScreenOverlay");
+    overlays.add('pausePlay');
+    add(Level1());
   }
 }
