@@ -1,4 +1,5 @@
 import 'package:angry_birds/main.dart';
+import 'package:angry_birds/overlays/tutorial_overlay.dart';
 import 'package:angry_birds/screens/overlays/back_button.dart';
 import 'package:angry_birds/screens/overlays/game_lost_overlay.dart';
 import 'package:angry_birds/screens/overlays/game_won_overlay.dart';
@@ -64,6 +65,9 @@ class _GameScreenState extends State<GameScreen> {
               },
               "GameWonOverlay": (BuildContext context, MyGame game) {
                 return const GameWonOverlay();
+              },
+              "tutorialOverlay": (BuildContext context, MyGame game) {
+                return const TutorialScreen();
               },
               "GameLostOverlay": (BuildContext context, MyGame game) {
                 return const GameLostOverlay();

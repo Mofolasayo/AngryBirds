@@ -48,7 +48,7 @@ class WelcomeOverlay extends StatelessWidget {
           ElevatedButton(
             style: ButtonStyle(backgroundColor: WidgetStateColor.transparent),
             onPressed: () {
-              // game.viewLevels();
+              game.viewTutorial();
             },
             child: const Text(
               'INSTRUCTIONS',
