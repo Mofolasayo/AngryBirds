@@ -1,4 +1,5 @@
 import 'package:angry_birds/main.dart';
+import 'package:angry_birds/screens/overlays/back_button.dart';
 import 'package:angry_birds/screens/overlays/game_lost_overlay.dart';
 import 'package:angry_birds/screens/overlays/game_won_overlay.dart';
 import 'package:angry_birds/screens/overlays/levels_screen_overlay.dart';
@@ -42,13 +43,23 @@ class _GameScreenState extends State<GameScreen> {
                 );
               },
               'levelsOverlay': (BuildContext context, MyGame game) {
-                return Center(child: Levels());
+                return Center(child: Levels(game: game));
               },
               'pausePlay': (BuildContext context, MyGame game) {
                 return Positioned(
                   top: 20,
                   left: 70,
                   child: PausePlay(game: game),
+                );
+              },
+              "backButtonOverlay": (BuildContext context, MyGame game) {
+                return Positioned(
+                  top: 20,
+                  left: 70,
+                  child: BackButtonOverlay(
+                    game: game,
+                    overlayname: "backButtonOverlay",
+                  ),
                 );
               },
               "GameWonOverlay": (BuildContext context, MyGame game) {
@@ -82,7 +93,6 @@ class _GameScreenState extends State<GameScreen> {
               // 'HighScoreOverlay',
             ], // Add this line
           ),
-          
         ],
       ),
     );
