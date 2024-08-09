@@ -1,3 +1,4 @@
+import 'package:angry_birds/screens/game_screen.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -38,9 +39,9 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   _navigateToGame() {
-    /*  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
       return GameScreen();
-    })); */
+    }));
   }
 
   @override

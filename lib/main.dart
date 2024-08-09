@@ -1,5 +1,6 @@
 import 'package:angry_birds/components/ground.dart';
 import 'package:angry_birds/levels/level1.dart';
+import 'package:angry_birds/splash_screen.dart';
 
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
@@ -15,9 +16,9 @@ Future<void> main() async {
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeRight,
   ]);
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: GameScreen(),
+    home: SplashScreen(),
   ));
 }
 
@@ -78,7 +79,7 @@ class MyGame extends Forge2DGame with TapCallbacks {
     overlays.remove("welcomeScreenOverlay");
     overlays.add('pausePlay');
     overlays.add('MusicOverlay');
-    overlays.add('RestartOverlay');
+    // overlays.add('RestartOverlay');
     overlays.add('scoreOverlay');
     overlays.add('highScoreOverlay');
     add(Level1());

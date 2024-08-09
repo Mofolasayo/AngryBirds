@@ -19,7 +19,7 @@ class Highscore extends StatelessWidget {
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           Text(
-            '12455',
+            '0',
             style: TextStyle(color: Colors.white),
           ),
         ],
