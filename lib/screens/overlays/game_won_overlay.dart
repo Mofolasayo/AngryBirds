@@ -1,8 +1,12 @@
+import 'package:angry_birds/levels/level1.dart';
+import 'package:angry_birds/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class GameWonOverlay extends StatelessWidget {
-  const GameWonOverlay({super.key});
+  final MyGame game;
+
+  const GameWonOverlay({super.key, required this.game});
 
   @override
   Widget build(BuildContext context) {
@@ -115,54 +119,68 @@ class GameWonOverlay extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Container(
-                                  padding: EdgeInsets.all(15),
-                                  width: 80,
-                                  height: 80,
-                                  decoration: BoxDecoration(
-                                      color: Color(0xFF035DA7),
-                                      border: Border.all(
-                                        color: Colors.white,
-                                        width: 3,
-                                      ),
-                                      borderRadius: BorderRadius.circular(100)),
-                                  child: SvgPicture.asset(
-                                    color: Color(0xFFFFB159),
-                                    'assets/images/menu_btn.svg',
+                                GestureDetector(
+                                  onTap: () {
+                                    game.overlays.remove('GameWonOverlay');
+                                    game.overlays.add('welcomeScreenOverlay');
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.all(15),
+                                    width: 80,
+                                    height: 80,
+                                    decoration: BoxDecoration(
+                                        color: Color(0xFF035DA7),
+                                        border: Border.all(
+                                          color: Colors.white,
+                                          width: 3,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(100)),
+                                    child: SvgPicture.asset(
+                                      color: Color(0xFFFFB159),
+                                      'assets/images/menu_btn.svg',
+                                    ),
                                   ),
                                 ),
                                 SizedBox(width: 30),
-                                Container(
-                                  padding: EdgeInsets.all(15),
-                                  width: 80,
-                                  height: 80,
-                                  decoration: BoxDecoration(
-                                      color: Color(0xFF035DA7),
-                                      border: Border.all(
-                                        color: Colors.white,
-                                        width: 3,
-                                      ),
-                                      borderRadius: BorderRadius.circular(100)),
-                                  child: SvgPicture.asset(
-                                    color: Color(0xFFFFB159),
-                                    'assets/images/restart_btn.svg',
-                                  ),
-                                ),
+                                // Container(
+                                //   padding: EdgeInsets.all(15),
+                                //   width: 80,
+                                //   height: 80,
+                                //   decoration: BoxDecoration(
+                                //       color: Color(0xFF035DA7),
+                                //       border: Border.all(
+                                //         color: Colors.white,
+                                //         width: 3,
+                                //       ),
+                                //       borderRadius: BorderRadius.circular(100)),
+                                //   child: SvgPicture.asset(
+                                //     color: Color(0xFFFFB159),
+                                //     'assets/images/restart_btn.svg',
+                                //   ),
+                                // ),
                                 SizedBox(width: 30),
-                                Container(
-                                  padding: EdgeInsets.all(15),
-                                  width: 80,
-                                  height: 80,
-                                  decoration: BoxDecoration(
-                                      color: Color(0xFF035DA7),
-                                      border: Border.all(
-                                        color: Colors.white,
-                                        width: 3,
-                                      ),
-                                      borderRadius: BorderRadius.circular(100)),
-                                  child: SvgPicture.asset(
-                                    color: Color(0xFFFFB159),
-                                    'assets/images/next_btn.svg',
+                                GestureDetector(
+                                  onTap: () {
+                                    game.overlays.remove('GameWonOverlay');
+                                    game.overlays.add('levelsOverlay');
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.all(15),
+                                    width: 80,
+                                    height: 80,
+                                    decoration: BoxDecoration(
+                                        color: Color(0xFF035DA7),
+                                        border: Border.all(
+                                          color: Colors.white,
+                                          width: 3,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(100)),
+                                    child: SvgPicture.asset(
+                                      color: Color(0xFFFFB159),
+                                      'assets/images/next_btn.svg',
+                                    ),
                                   ),
                                 ),
                               ],

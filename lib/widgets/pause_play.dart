@@ -1,5 +1,4 @@
 import 'package:angry_birds/main.dart';
-import 'package:angry_birds/screens/overlays/pause_overlay_screen.dart';
 import 'package:flutter/material.dart';
 
 

@@ -64,7 +64,7 @@ class _GameScreenState extends State<GameScreen> {
                 );
               },
               "GameWonOverlay": (BuildContext context, MyGame game) {
-                return const GameWonOverlay();
+                return GameWonOverlay(game: game);
               },
               "tutorialOverlay": (BuildContext context, MyGame game) {
                 return const TutorialScreen();

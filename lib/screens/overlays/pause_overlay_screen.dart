@@ -86,39 +86,46 @@ class PauseOverlay extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Container(
-                                  padding: const EdgeInsets.all(15),
-                                  width: 80,
-                                  height: 80,
-                                  decoration: BoxDecoration(
-                                      color: const Color(0xFF035DA7),
-                                      border: Border.all(
-                                        color: Colors.white,
-                                        width: 3,
-                                      ),
-                                      borderRadius: BorderRadius.circular(100)),
-                                  child: SvgPicture.asset(
-                                    color: const Color(0xFFFFB159),
-                                    'assets/images/menu_btn.svg',
+                                GestureDetector(
+                                  onTap: () {
+                                    game.overlays.remove('PauseOverlay');
+                                    game.overlays.add('welcomeScreenOverlay');
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.all(15),
+                                    width: 80,
+                                    height: 80,
+                                    decoration: BoxDecoration(
+                                        color: const Color(0xFF035DA7),
+                                        border: Border.all(
+                                          color: Colors.white,
+                                          width: 3,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(100)),
+                                    child: SvgPicture.asset(
+                                      color: const Color(0xFFFFB159),
+                                      'assets/images/menu_btn.svg',
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(width: 30),
-                                Container(
-                                  padding: const EdgeInsets.all(15),
-                                  width: 80,
-                                  height: 80,
-                                  decoration: BoxDecoration(
-                                      color: const Color(0xFF035DA7),
-                                      border: Border.all(
-                                        color: Colors.white,
-                                        width: 3,
-                                      ),
-                                      borderRadius: BorderRadius.circular(100)),
-                                  child: SvgPicture.asset(
-                                    color: const Color(0xFFFFB159),
-                                    'assets/images/restart_btn.svg',
-                                  ),
-                                ),
+                                // Container(
+                                //   padding: const EdgeInsets.all(15),
+                                //   width: 80,
+                                //   height: 80,
+                                //   decoration: BoxDecoration(
+                                //       color: const Color(0xFF035DA7),
+                                //       border: Border.all(
+                                //         color: Colors.white,
+                                //         width: 3,
+                                //       ),
+                                //       borderRadius: BorderRadius.circular(100)),
+                                //   child: SvgPicture.asset(
+                                //     color: const Color(0xFFFFB159),
+                                //     'assets/images/restart_btn.svg',
+                                //   ),
+                                // ),
                                 const SizedBox(width: 30),
                                 GestureDetector(
                                   onTap: () {
