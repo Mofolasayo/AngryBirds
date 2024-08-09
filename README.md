@@ -1,16 +1,38 @@
-# angry_birds
+# Angry Birds
+This project is an Angry Birds-like game developed using the Flame engine and Forge2D in Flutter. 
+The game features a slingshot mechanism, obstacles, and pigs that players must knock down to win levels. 
+The project demonstrates collision detection, game state management, and the use of overlays to handle different game states such as winning or losing a level.
 
-A new Flutter project.
-
+## Features
+- Slingshot Mechanism: Drag and release the player to launch it towards the obstacles and pigs.
+- Obstacles: Various obstacles are placed in the game world that the player must navigate to hit the pigs.
+- Collision Detection: Detects when pigs fall to the ground, triggering the game state change.
+- Game Overlays: Includes overlays for game states such as 'Game Won' and 'Game Lost.'
+- Score System: Players earn points by successfully knocking pigs to the ground.
+- Level Progression: Players advance to the next level upon successfully completing the current level.
+  
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Installation
+Clone the repository:
 
-A few resources to get you started if this is your first Flutter project:
+```git clone https://github.com/your-username/AngryBirds.git```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```cd angry_birds```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Install dependencies:
+```flutter pub get```
+
+Run the app:
+```flutter run```
+
+Appetizo: https://appetize.io/app/b_s4wgn7gorbedhpva5lrheu5clu
+
+Apk: https://drive.google.com/drive/folders/1OPLp3vG-4daaZUZ6sgdM_JORHuIs-ON-?usp=drive_link
+
+![WhatsApp Image 2024-08-08 at 20 59 15 (1)](https://github.com/user-attachments/assets/5a57437a-ee03-48dc-9ab0-28ddbc7b9955)
+![WhatsApp Image 2024-08-08 at 20 59 16 (1)](https://github.com/user-attachments/assets/271feedc-d281-4918-96e1-9262148f4b19)
+![WhatsApp Image 2024-08-08 at 20 59 16 (2)](https://github.com/user-attachments/assets/0052d379-dac8-4398-b76f-fc18fe47d3df)
+![WhatsApp Image 2024-08-08 at 20 59 47](https://github.com/user-attachments/assets/4f2cb2fd-9217-4d5b-9f9b-763a8c116c44)
+
+

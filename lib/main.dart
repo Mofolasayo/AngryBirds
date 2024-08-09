@@ -1,7 +1,8 @@
 import 'package:angry_birds/components/ground.dart';
 import 'package:angry_birds/levels/level1.dart';
 import 'package:angry_birds/splash_screen.dart';
-
+import 'package:angry_birds/levels/level6.dart';
+import 'package:angry_birds/overlays/welcome_overlay.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:angry_birds/screens/game_screen.dart';
@@ -75,7 +76,7 @@ class MyGame extends Forge2DGame with TapCallbacks {
 
   void startGame() {
     FlameAudio.bgm.stop();
-    FlameAudio.bgm.play('in_game.mp3', volume: 0.0);
+    FlameAudio.bgm.play('in_game.mp3', volume: 0.5); 
     overlays.remove("welcomeScreenOverlay");
     overlays.add('pausePlay');
     overlays.add('MusicOverlay');
