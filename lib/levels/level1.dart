@@ -28,6 +28,10 @@ var pig1 =
         Pig(Vector2(300, 50), await gameRef.loadSprite('pig.webp'), gameRef);
     pigs.add(pig1);
     add(pig1);
+    var pig2 =
+        Pig(Vector2(350, 50), await gameRef.loadSprite('pig.webp'), gameRef);
+    //pigs.add(pig2);
+    add(pig2);
     
     add(Obstacles(
       Vector2(300, 100),
@@ -47,6 +51,23 @@ var pig1 =
     ));
     
   
+    add(Obstacles(
+      Vector2(350, 100),
+      await gameRef.loadSprite('Barrel.webp'),
+    ));
+    add(Obstacles(
+      Vector2(350, 150),
+      await gameRef.loadSprite('Wooden_Crate.webp'),
+    ));
+    add(Obstacles(
+      Vector2(350, 200),
+      await gameRef.loadSprite('Barrel.webp'),
+    ));
+    add(Obstacles(
+      Vector2(350, 240),
+      await gameRef.loadSprite('Wooden_Crate.webp'),
+    ));
+
   }
 
   @override

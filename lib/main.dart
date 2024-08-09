@@ -101,7 +101,7 @@ class MyGame extends Forge2DGame with TapCallbacks {
     overlays.remove("backButtonOverlay");
     overlays.add('pausePlay');
     overlays.add('MusicOverlay');
-    overlays.add('RestartOverlay');
+    //overlays.add('RestartOverlay');
     overlays.add('scoreOverlay');
     overlays.add('highScoreOverlay');
     add(comp);

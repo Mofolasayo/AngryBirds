@@ -70,7 +70,7 @@ class PauseOverlay extends StatelessWidget {
                                   ),
                                   SizedBox(height: 5),
                                   Text(
-                                    '10,000',
+                                    '0',
                                     style: TextStyle(
                                       color: Colors.white,
                                       height: 1,

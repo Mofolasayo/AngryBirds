@@ -7,6 +7,8 @@ import 'package:angry_birds/main.dart';
 import 'package:flame/components.dart';
 
 class Level5 extends Component with HasGameRef<MyGame> {
+  List<Pig> pigs = [];
+
   @override
   Future<void> onLoad() async {
     await super.onLoad();
@@ -26,12 +28,15 @@ class Level5 extends Component with HasGameRef<MyGame> {
     add(Player(
       await gameRef.loadSprite('Red.webp'),
     ));
-
-    add(Pig(
+var pig1 =
+        Pig(Vector2(300, 50), await gameRef.loadSprite('pig.webp'), gameRef);
+    pigs.add(pig1);
+    add(pig1);
+    /*add(Pig(
       Vector2(300, 50),
       await gameRef.loadSprite('pig.webp'),
       gameRef
-    ));
+    ));*/
     add(Obstacles(
       Vector2(300, 100),
       await gameRef.loadSprite('Barrel.webp'),
@@ -122,5 +127,14 @@ class Level5 extends Component with HasGameRef<MyGame> {
       Vector2(450, 300),
       await gameRef.loadSprite('Wooden_Crate.webp'),
     ));
+  }
+  @override
+  void update(double dt) {
+    super.update(dt);
+    bool allPigsTouchedGround = pigs.every((pig) => pig.isTouchingGround);
+    if (allPigsTouchedGround) {
+      gameRef.overlays.add('GameWonOverlay');
+      gameRef.pauseEngine();
+    }
   }
 }
