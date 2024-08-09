@@ -1,6 +1,9 @@
 import 'package:angry_birds/main.dart';
+import 'package:angry_birds/overlays/tutorial_overlay.dart';
+import 'package:angry_birds/screens/overlays/back_button.dart';
 import 'package:angry_birds/screens/overlays/game_lost_overlay.dart';
 import 'package:angry_birds/screens/overlays/game_won_overlay.dart';
+import 'package:angry_birds/screens/overlays/levels_screen_overlay.dart';
 import 'package:angry_birds/screens/overlays/pause_overlay_screen.dart';
 import 'package:angry_birds/widgets/highscore.dart';
 import 'package:angry_birds/widgets/music_toggle.dart';
@@ -40,6 +43,9 @@ class _GameScreenState extends State<GameScreen> {
                   child: WelcomeOverlay(game),
                 );
               },
+              'levelsOverlay': (BuildContext context, MyGame game) {
+                return Center(child: Levels(game: game));
+              },
               'pausePlay': (BuildContext context, MyGame game) {
                 return Positioned(
                   top: 20,
@@ -47,8 +53,21 @@ class _GameScreenState extends State<GameScreen> {
                   child: PausePlay(game: game),
                 );
               },
+              "backButtonOverlay": (BuildContext context, MyGame game) {
+                return Positioned(
+                  top: 50,
+                  left: 70,
+                  child: BackButtonOverlay(
+                    game: game,
+                    overlayname: "backButtonOverlay",
+                  ),
+                );
+              },
               "GameWonOverlay": (BuildContext context, MyGame game) {
                 return const GameWonOverlay();
+              },
+              "tutorialOverlay": (BuildContext context, MyGame game) {
+                return const TutorialScreen();
               },
               "GameLostOverlay": (BuildContext context, MyGame game) {
                 return const GameLostOverlay();
@@ -77,7 +96,6 @@ class _GameScreenState extends State<GameScreen> {
                   child: Highscore(),
                 );
               },
-            
             },
             initialActiveOverlays: const [
               // 'pausePlay',
@@ -87,7 +105,6 @@ class _GameScreenState extends State<GameScreen> {
               // 'HighScoreOverlay',
             ], // Add this line
           ),
-          
         ],
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:angry_birds/components/ground.dart';
 import 'package:angry_birds/levels/level1.dart';
+import 'package:angry_birds/splash_screen.dart';
 import 'package:angry_birds/levels/level6.dart';
 import 'package:angry_birds/overlays/welcome_overlay.dart';
 import 'package:flame/components.dart';
@@ -12,19 +13,19 @@ import 'package:flame_audio/flame_audio.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-   
+
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeRight,
   ]);
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: GameScreen(),
+    home: SplashScreen(),
   ));
 }
 
 class MyGame extends Forge2DGame with TapCallbacks {
   bool isPaused = false;
-   bool isMusicPlaying = true;
+  bool isMusicPlaying = true;
   int score = 0;
   final ValueNotifier<int> scoreNotifier = ValueNotifier<int>(0);
 
@@ -32,17 +33,19 @@ class MyGame extends Forge2DGame with TapCallbacks {
 
   void toggleMusic() {
     if (isMusicPlaying) {
-      FlameAudio.bgm.pause();  
+      FlameAudio.bgm.pause();
     } else {
       FlameAudio.bgm.resume();
     }
     isMusicPlaying = !isMusicPlaying;
   }
-void updateScore(int newScore) {
+
+  void updateScore(int newScore) {
     score = newScore;
     scoreNotifier.value = score;
     print('Score updated: $score');
   }
+
   void togglePause() {
     isPaused = !isPaused;
     if (isPaused) {
@@ -63,13 +66,12 @@ void updateScore(int newScore) {
   Future<void> onLoad() async {
     await super.onLoad();
     FlameAudio.bgm.initialize();
-    FlameAudio.bgm.play('bg_music.mp3', volume: 0.5); 
+    FlameAudio.bgm.play('bg_music.mp3', volume: 0.5);
     overlays.add("welcomeScreenOverlay");
     add(SpriteComponent()
       ..sprite = await loadSprite("Site-background-light.webp")
       ..size = size);
     add(Ground(size));
-
   }
 
   void startGame() {
@@ -78,9 +80,39 @@ void updateScore(int newScore) {
     overlays.remove("welcomeScreenOverlay");
     overlays.add('pausePlay');
     overlays.add('MusicOverlay');
-    overlays.add('RestartOverlay');
+    // overlays.add('RestartOverlay');
     overlays.add('scoreOverlay');
     overlays.add('highScoreOverlay');
     add(Level1());
+  }
+
+  void viewLevels() {
+    overlays.remove("welcomeScreenOverlay");
+    overlays.add("backButtonOverlay");
+    overlays.add("levelsOverlay");
+  }
+
+  void backAction(String overlayName) {
+    overlays.remove(overlayName);
+    overlays.remove("levelsOverlay");
+    overlays.add("welcomeScreenOverlay");
+    overlays.remove("tutorialOverlay");
+  }
+
+  void loadLevel(Component comp) {
+    overlays.remove("levelsOverlay");
+    overlays.remove("backButtonOverlay");
+    overlays.add('pausePlay');
+    overlays.add('MusicOverlay');
+    overlays.add('RestartOverlay');
+    overlays.add('scoreOverlay');
+    overlays.add('highScoreOverlay');
+    add(comp);
+  }
+
+  void viewTutorial() {
+    overlays.add("tutorialOverlay");
+    overlays.add("backButtonOverlay");
+    overlays.remove("welcomeScreenOverlay");
   }
 }

@@ -21,7 +21,7 @@ class WelcomeOverlay extends StatelessWidget {
               width: 200,
               height: 56,
               child: Image.asset("assets/images/textLogo.webp")),
-          const SizedBox(height: 20),
+          // const SizedBox(height: 20),
           ElevatedButton(
             style: ButtonStyle(
                 backgroundColor: WidgetStateColor.transparent,
@@ -34,14 +34,24 @@ class WelcomeOverlay extends StatelessWidget {
               style: TextStyle(fontFamily: "Steelar", color: Colors.black),
             ),
           ),
-          const SizedBox(height: 20),
+          // const SizedBox(height: 20),
           ElevatedButton(
             style: ButtonStyle(backgroundColor: WidgetStateColor.transparent),
             onPressed: () {
-              // Implement other buttons if needed
+              game.viewLevels();
             },
             child: const Text(
               'LEVELS',
+              style: TextStyle(fontFamily: "Steelar", color: Colors.black),
+            ),
+          ),
+          ElevatedButton(
+            style: ButtonStyle(backgroundColor: WidgetStateColor.transparent),
+            onPressed: () {
+              game.viewTutorial();
+            },
+            child: const Text(
+              'INSTRUCTIONS',
               style: TextStyle(fontFamily: "Steelar", color: Colors.black),
             ),
           ),
